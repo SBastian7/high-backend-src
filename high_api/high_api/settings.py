@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'store',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +64,8 @@ DATABASES = {
     'OPTIONS': {'sslmode': 'require'},
   }
 }
+
+print("\n\n\nAAAAAAAAAAAAAAAAAAAAA\n{}\n\n".format(os.environ.get('DB_HOST')))
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
