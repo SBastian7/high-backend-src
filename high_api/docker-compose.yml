@@ -14,10 +14,11 @@ services:
       - postgres
     environment:
       - DJANGO_SETTINGS_MODULE=high_api.settings
-    command: ["gunicorn", "--bind", "0.0.0.0:8000", "high_api.wsgi:application"]
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
   postgres:
     image: postgres:13
+    container_name: high-db
     environment:
       POSTGRES_DB: high_db
       POSTGRES_USER: sebastn.molina
