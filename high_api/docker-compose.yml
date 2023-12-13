@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: high-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+    environment:
+      - DJANGO_SETTINGS_MODULE=high_api.settings
+    command: ["gunicorn", "--bind", "0.0.0.0:8000", "high_api.wsgi:application"]
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: high_db
+      POSTGRES_USER: sebastn.molina
+      POSTGRES_PASSWORD: bz4XEvQBrLR5
