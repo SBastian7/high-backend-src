@@ -15,11 +15,13 @@ services:
     environment:
       - DJANGO_SETTINGS_MODULE=high_api.settings
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    env_file:
+      - .env
 
   postgres:
     image: postgres:13
     container_name: high-db
     environment:
-      POSTGRES_DB: high_db
-      POSTGRES_USER: sebastn.molina
-      POSTGRES_PASSWORD: bz4XEvQBrLR5
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
